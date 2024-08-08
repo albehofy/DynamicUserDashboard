@@ -1,0 +1,7 @@
+<nav ngClass="d-flex justify-content-between py-3">
+    <div ngClass="d-flex">
+        @for(color of colors; track $index) {
+        <div [style]="{'width':'37px', 'height':'37px', 'background-color':color}" ngClass="mx-2 rounded-circle"></div>
+        }
+    </div>
+</nav>

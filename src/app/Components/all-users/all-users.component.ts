@@ -5,11 +5,12 @@ import { User } from '../../Interfaces/user';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-all-users',
   standalone: true,
-  imports: [ MatPaginatorModule, CommonModule,RouterLink,FormsModule],
+  imports: [ MatPaginatorModule, CommonModule,RouterLink,FormsModule, NavbarComponent, FooterComponent],
   templateUrl: './all-users.component.html',
   styleUrl: './all-users.component.css'
 })

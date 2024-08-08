@@ -1,26 +1,35 @@
 @defer (on idle){
-@if(isLoaded){
+<!-- Condition For Loader With paginator -->
+<app-navbar />
+<main ngClass="container py-3">
+    <img src="/assets/maids.cc.svg" ngClass="d-block m-auto pb-4" alt="maids.cc">
+    @if(isLoaded){
     <div ngClass="container text-center">
-        <h3 ngClass="py-1 text-danger">Showing All Users </h3>
-        <input type="number" class="form-control form-control-lg mb-2" [(ngModel)]="userInfo" (input)="filterUsers()" (change)="reset()"
-            placeholder="Search users by ID">
+        <!-- input for filtering users by ID -->
+        <input type="number" class=" w-25 form-control form-control-lg mb-2 ms-auto" [(ngModel)]="userInfo"
+            (change)="filterUsers()" (input)="filterUsers()" placeholder="Search users by ID">
+
+        <!-- List For All Users -->
         <div class="card">
             <ul class="list-group list-group-flush">
-                <li ngClass="list-group-item d-flex justify-content-around text-center p-0 text-uppercase text-danger">
-                    <span ngClass=" d-inline-block w-10 py-2 fw-bolder">ID</span>
-                    <span ngClass=" d-inline-block w-50 py-2 border border-top-0 border-bottom-0 fw-bolder">Full Name</span>
-                    <span ngClass=" d-inline-block w-33 py-2 fw-bolder">Email</span>
+                <li
+                    ngClass="list-group-item theader d-flex justify-content-around text-center p-0 text-uppercase text-success">
+                    <span ngClass=" d-inline-block w-12 py-2 fw-bolder">ID</span>
+                    <span ngClass=" d-inline-block w-33 py-2 border border-top-0 border-bottom-0 fw-bolder">Full
+                        Name</span>
+                    <span ngClass=" d-inline-block w-55 py-2 fw-bolder">Email</span>
                 </li>
-                <!-- @if (totalItems > 0) { -->
+                <!-- Looping Though Users For Displayall of them  -->
                 @for (user of users; track $index) {
-                <li class="list-group-item p-0">
+                <li class="list-group-item tbody p-0">
                     <a [routerLink]="['/user', user.id]"
-                        ngClass="text-decoration-none d-flex justify-content-around text-center">
-                        <span ngClass=" d-inline-block w-10 py-2 ">{{ user.id }}</span>
-                        <span ngClass=" d-inline-block w-50 py-2 border border-top-0 border-bottom-0 ">{{ user.first_name
+                        ngClass="text-decoration-none d-flex justify-content-around text-center text-black">
+                        <span ngClass=" d-inline-block w-12 py-2 ">{{ user.id }}</span>
+                        <span ngClass=" d-inline-block w-33 py-2 border border-top-0 border-bottom-0 ">{{
+                            user.first_name
                             }} {{ user.last_name
                             }}</span>
-                        <span ngClass=" d-inline-block w-33 py-2 ">{{ user.email }}</span>
+                        <span ngClass=" d-inline-block w-55 py-2 ">{{ user.email }}</span>
                     </a>
                 </li>
                 }@empty{
@@ -29,22 +38,29 @@
                     <img src="./assets/noData.png" ngClass="no-data" alt="no data founded">
                 </div>
                 }
-    
+
             </ul>
         </div>
-    
+
+        <!-- Pagination -->
         <div ngClass="d-flex justify-content-center">
-            <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage" (page)="pageChanged($event)">
+            <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage"
+                (page)="pageChanged($event)">
             </mat-paginator>
         </div>
-    
+
     </div>
-}@else {
+    }@else {
+    <!-- Loader -->
     <div class="loader position-fixed h-100 w-100 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status"></div>
     </div>
-}
+    }
+</main>
+<app-footer />
+
 }@loading(minimum 500ms) {
+<!-- Loader on browser Loading For First Time -->
 <div class="loader position-fixed h-100 w-100 d-flex align-items-center justify-content-center">
     <div class="spinner-border text-primary" role="status"></div>
 </div>

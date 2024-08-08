@@ -1,5 +1,6 @@
-@defer{
 
+@defer{
+<app-navbar/>
 <div class="w-50 mx-auto" style="min-width: 280px; max-width: 450px;">
     <h3>User Details</h3>
     <a href="" ngClass="d-block my-2" router-link="['/all-users']"><i class="bi bi-arrow-left"></i> all users</a>
@@ -25,6 +26,7 @@
         </table>
     </div>
 </div>
+<app-footer />
 }@loading(minimum 500ms){
 <div class="loader position-fixed h-100 w-100 d-flex align-items-center justify-content-center text-primary">
     <div class="spinner-border" role="status">

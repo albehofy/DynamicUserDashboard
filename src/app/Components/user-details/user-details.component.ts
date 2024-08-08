@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { FetchingAPIService } from '../../Services/fetching-api.service';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-user-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NavbarComponent, FooterComponent],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css'
 })
