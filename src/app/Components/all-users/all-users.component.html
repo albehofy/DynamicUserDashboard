@@ -1,64 +1,66 @@
 @defer {
 <!-- Condition For Loader With paginator -->
-<app-navbar />
-<main ngClass="container py-3">
-    <!-- company Logo -->
-    <img src="/assets/maids.cc.svg" ngClass="d-block m-auto pb-4" alt="maids.cc">
-    @if(isLoaded){
-    <div ngClass="container text-center">
-        <!-- input for filtering users by ID -->
-        <input type="number" class=" w-25 form-control form-control-lg mb-2 ms-auto" [(ngModel)]="userInfo"
-            (change)="filterUsers()" (input)="filterUsers()" placeholder="Search users by ID">
-
-        <!-- List For All Users -->
-        <div class="card">
-            <ul class="list-group list-group-flush">
-                <li
-                    ngClass="list-group-item theader d-flex justify-content-around text-center p-0 text-uppercase text-success">
-                    <span ngClass=" d-inline-block w-12 py-2  display-6 fs-5">ID</span>
-                    <span ngClass=" d-inline-block w-33 py-2 border border-top-0 border-bottom-0  display-6 fs-5">Full
-                        Name</span>
-                    <span ngClass=" d-inline-block w-55 py-2 display-6 fs-5">Email</span>
-                </li>
-                <!-- Looping Though Users For Displayall of them  -->
-                @for (user of users; track $index) {
-                <li class="list-group-item tbody p-0">
-                    <a [routerLink]="['/user', user.id]"
-                        ngClass="text-decoration-none d-flex justify-content-around text-center text-black">
-                        <span ngClass=" d-inline-block w-12 py-2  display-6 fs-6">{{ user.id }}</span>
-                        <span ngClass=" d-inline-block w-33 py-2 border border-top-0 border-bottom-0  display-6 fs-6">{{
-                            user.first_name
-                            }} {{ user.last_name
-                            }}</span>
-                        <span ngClass=" d-inline-block w-55 py-2 display-6 fs-6">{{ user.email }}</span>
-                    </a>
-                </li>
-                }@empty{
-                <div ngClass="text-center pt-5 text-warning">
-                    <h2>oooops there's no data</h2>
-                    <img src="./assets/noData.png" ngClass="no-data" alt="no data founded">
-                </div>
-                }
-
-            </ul>
+<div class="holder d-flex justify-content-between flex-column">
+    <app-navbar />
+    <main ngClass="container py-3">
+        <!-- company Logo -->
+        <img src="/assets/maids.cc.svg" ngClass="d-block m-auto pb-4 mb-3" alt="maids.cc">
+        @if(isLoaded){
+        <div ngClass="container text-center">
+            <!-- input for filtering users by ID -->
+            <input type="number" class=" w-25 form-control form-control-lg mb-2 ms-auto" [(ngModel)]="userInfo"
+                (change)="filterUsers()" (input)="filterUsers()" placeholder="Search users by ID">
+    
+            <!-- List For All Users -->
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li
+                        ngClass="list-group-item theader d-flex justify-content-around text-center p-0 text-uppercase text-success">
+                        <span ngClass=" d-inline-block w-12 py-2  display-6 fs-5">ID</span>
+                        <span ngClass=" d-inline-block w-33 py-2 border border-top-0 border-bottom-0  display-6 fs-5">Full
+                            Name</span>
+                        <span ngClass=" d-inline-block w-55 py-2 display-6 fs-5">Email</span>
+                    </li>
+                    <!-- Looping Though Users For Displayall of them  -->
+                    @for (user of users; track $index) {
+                    <li class="list-group-item tbody p-0">
+                        <a [routerLink]="['/user', user.id]"
+                            ngClass="text-decoration-none d-flex justify-content-around text-center text-black">
+                            <span ngClass=" d-inline-block w-12 py-2  display-6 fs-6">{{ user.id }}</span>
+                            <span ngClass=" d-inline-block w-33 py-2 border border-top-0 border-bottom-0  display-6 fs-6">{{
+                                user.first_name
+                                }} {{ user.last_name
+                                }}</span>
+                            <span ngClass=" d-inline-block w-55 py-2 display-6 fs-6">{{ user.email }}</span>
+                        </a>
+                    </li>
+                    }@empty{
+                    <div ngClass="text-center pt-5 text-warning">
+                        <h2>oooops there's no data</h2>
+                        <img src="./assets/noData.png" ngClass="no-data" alt="no data founded">
+                    </div>
+                    }
+    
+                </ul>
+            </div>
+    
+            <!-- Pagination -->
+            <div ngClass="d-flex justify-content-center">
+                <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage"
+                    (page)="pageChanged($event)">
+                </mat-paginator>
+            </div>
+    
         </div>
-
-        <!-- Pagination -->
-        <div ngClass="d-flex justify-content-center">
-            <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageIndex]="currentPage"
-                (page)="pageChanged($event)">
-            </mat-paginator>
+        }@else {
+        <!-- Loader when Paginator Call Data-->
+        <div class="loader position-fixed h-100 w-100 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" role="status"></div>
         </div>
-
-    </div>
-    }@else {
-    <!-- Loader when Paginator Call Data-->
-    <div class="loader position-fixed h-100 w-100 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status"></div>
-    </div>
-    }
-</main>
-<app-footer />
+        }
+    </main>
+    <app-footer />
+</div>
 
 }@loading(minimum 500ms) {
 <!-- Loader on browser Loading For First Time -->

@@ -1,5 +1,10 @@
-  .card {
+.holder {
+    min-height: 100vh;
+}
+
+.card {
     overflow: auto;
+    
   }
 
   .w-12 {
