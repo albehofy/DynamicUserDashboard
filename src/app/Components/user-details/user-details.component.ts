@@ -24,7 +24,7 @@ export class UserDetailsComponent {
     {
       next:(res)=>{
         this.userDetails = res.data;
-        console.log(res.data)
+        console.log(res)
         console.log(res)
       },error: (err) => {
         // this.errorMessage = 'Failed to load user data';
