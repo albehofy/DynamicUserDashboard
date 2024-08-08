@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  colors:Array<string> = ["red", "yellow", "green"];
+  // bolets Colors
+  colors: Array<string> = ["red", "yellow", "green"];
 
 }

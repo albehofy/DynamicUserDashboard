@@ -1,7 +1,8 @@
-@defer (on idle){
+@defer {
 <!-- Condition For Loader With paginator -->
 <app-navbar />
 <main ngClass="container py-3">
+    <!-- company Logo -->
     <img src="/assets/maids.cc.svg" ngClass="d-block m-auto pb-4" alt="maids.cc">
     @if(isLoaded){
     <div ngClass="container text-center">
@@ -51,7 +52,7 @@
 
     </div>
     }@else {
-    <!-- Loader -->
+    <!-- Loader when Paginator Call Data-->
     <div class="loader position-fixed h-100 w-100 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status"></div>
     </div>

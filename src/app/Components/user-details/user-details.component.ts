@@ -1,8 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { FetchingAPIService } from '../../Services/fetching-api.service';
 import { CommonModule } from '@angular/common';
+
+import { UserService } from '../../Services/user.service';
+
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
+
 @Component({
   selector: 'app-user-details',
   standalone: true,
@@ -10,26 +13,23 @@ import { FooterComponent } from '../footer/footer.component';
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css'
 })
+
 export class UserDetailsComponent {
 
-  userID:number = -1; 
-  userDetails: any = {}; 
-  isLoading:boolean = false; 
+  userID: number = -1;
+  userDetails: any = {};
+  isLoading: boolean = false;
 
-  constructor(private FetchingAPIService: FetchingAPIService){}
-@Input() set id(value: number) {
-  this.userID = value; 
+  constructor(private UserService: UserService) { }
+  @Input() set id(value: number) {
+    this.userID = value;
 
-  this.FetchingAPIService.gettingUserDetails(value).subscribe(
-    {
-      next:(res)=>{
-        this.userDetails = res.data;
-        console.log(res)
-        console.log(res)
-      },error: (err) => {
-        // this.errorMessage = 'Failed to load user data';
+    this.UserService.getUserById(value).subscribe(
+      {
+        next: (res) => {
+          this.userDetails = res.data;
+        }
       }
-    }
-  )
-}
+    )
+  }
 }

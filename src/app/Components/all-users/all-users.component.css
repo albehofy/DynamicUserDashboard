@@ -25,7 +25,12 @@
 
   main img {
     width: 270px;
-}
+  }
+
+  input {
+    min-width: 221px;
+  }
+
   .no-data {
     width: 100%;
     max-width: 420px;

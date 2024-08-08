@@ -1,14 +1,20 @@
 @defer{
 <div class="mx-auto">
+    <!-- Navbar -->
     <app-navbar />
+
+    <!-- User Details -->
     <div class="user-details">
-        <!-- <h3>User Details</h3>
-    <a href="" ngClass="d-block my-2" router-link="['/all-users']"><i class="bi bi-arrow-left"></i> all users</a> -->
+        <!-- User Data Holder -->
         <div ngClass="mx-auto w-50 card card-holder pb-2">
+            <!-- User avatar -->
             <img class="rounded-circle avatar mx-auto" [src]="userDetails.avatar" alt="Card image cap">
-            <h2 ngClass="display-6 fs-3 text-primary text-center py-4">{{userDetails.first_name}} {{userDetails.last_name}}</h2>
+            <!-- user full Name -->
+            <h2 ngClass="display-6 fs-3 text-primary text-center py-4">{{userDetails.first_name}}
+                {{userDetails.last_name}}</h2>
+
+            <!-- User Data "id + email" -->
             <div ngClass="personal-data w-75 py-3 my-3 mx-auto border border-start-0 border-end-0">
-                <!-- <h2 ngClass="d-inline-block pb-1 border border-top-0 border-start-0 border-end-0 text-success">User Data</h2> -->
                 <div ngClass="d-flex display-6 fs-3 text-center py-2">
                     <p ngClass="w-25 fw-noraml text-dark-subtle">ID</p>
                     <p ngClass="w-75 text-success">{{userDetails.id}}</p>
@@ -18,12 +24,19 @@
                     <p ngClass="w-75 email text-success">{{userDetails.email}}</p>
                 </div>
             </div>
-            <button ngClass="back-btn d-block mx-auto btn btn-primary text-white"><a href="" ngClass="d-block my-2 text-white" router-link="['/all-users']"><i class="bi bi-arrow-left"></i></a></button>
+
+            <!-- Back To all Users -->
+            <button ngClass="back-btn d-block mx-auto btn btn-primary text-white"><a href=""
+                    ngClass="d-block my-2 text-white" router-link="['/all-users']"><i class="bi bi-arrow-left"></i></a>
+            </button>
         </div>
-    </div> 
-        <app-footer />
+    </div>
+
+    <!-- Footer -->
+    <app-footer />
 </div>
 }@loading(minimum 500ms){
+<!-- Loader -->
 <div class="loader position-fixed h-100 w-100 d-flex align-items-center justify-content-center text-primary">
     <div class="spinner-border" role="status">
     </div>
