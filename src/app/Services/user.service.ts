@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = environment.base_url; // Replace with your actual API URL
+  private apiUrl = environment.base_url;
 
   constructor(private http: HttpClient, private cacheService: CacheService) {}
 
